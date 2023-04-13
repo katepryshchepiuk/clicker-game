@@ -1,3 +1,89 @@
+// Get DOM elements
+const registrationForm = document.getElementById("user-registration");
+const game = document.getElementById("game");
+const nameInput = document.getElementById("name");
+const emailInput = document.getElementById("email");
+const nameError = document.getElementById("name-error");
+const emailError = document.getElementById("email-error");
+
+// Validate input and display error message when input fields are blurred
+nameInput.addEventListener("blur", validateName);
+emailInput.addEventListener("blur", validateEmail);
+
+function validateName() {
+    const nameValue = nameInput.value.trim();
+
+    if (nameValue === "") {
+        nameError.textContent = "Name is required";
+        nameInput.classList.add("error");
+        return false;
+    } else if (nameValue.length < 2) {
+        nameError.textContent = "Name must be at least 2 characters long";
+        nameInput.classList.add("error");
+        return false;
+    }
+
+    return true;
+}
+
+function validateEmail() {
+    const emailValue = emailInput.value.trim();
+    const emailRegex = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
+
+    if (emailValue === "") {
+        emailError.textContent = "Email is required";
+        emailInput.classList.add("error");
+        return false;
+    }  else if (!emailRegex.test(emailValue)) {
+        emailError.textContent = "Please enter a valid email address";
+        emailInput.classList.add("error");
+        return false;
+    }
+    
+    return true;
+}
+
+// Clear error messages when input fields are focused
+nameInput.addEventListener("focus", clearNameError);
+
+function clearNameError() {
+    nameError.textContent = "";
+    nameInput.classList.remove("error");
+}
+
+emailInput.addEventListener("focus", clearEmailError);
+
+function clearEmailError() {
+    emailError.textContent = "";
+    emailInput.classList.remove("error");
+}
+
+//Submit registration form
+registrationForm.addEventListener("submit", registrationSubmit);
+
+function registrationSubmit(event) {
+    // prevent default form submission
+    event.preventDefault();
+
+    if (validateName() && validateEmail()) {
+      // Create user object with name and email properties
+      const user = {
+        name: nameInput.value,
+        email: emailInput.value,
+      };
+      localStorage.setItem("user", JSON.stringify(user));
+      
+      registrationForm.reset();
+
+      // Hide the registration form and show the game
+      registrationForm.style.display = "none";
+      game.style.display = "block";
+    }
+}
+
+
+
+
 //Set maximum amount of levels per game
 const maxLevel = 5;
 

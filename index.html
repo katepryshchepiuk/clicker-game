@@ -4,42 +4,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <title>Clicker Game</title>
 </head>
 <body>
-    <header>
-    </header>
-    <main>
+    <main class="main-section">
         <!-- Registration form elements -->
         <section>
-            <h2>Clicker game</h2>
             <form id="user-registration">
-              <label for="name">Name:</label>
-              <input type="text" id="name" name="name" placeholder="Maria" required>
-              <p id="name-error"></p>
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Enter your name" maxlength="20">
+              <p class="error-message" id="name-error"></p>
               <label for="email">Email:</label>
-              <input type="email" id="email" name="email" placeholder="hello@gmail.com" required>
-              <p id="email-error"></p>
+              <input type="email" id="email" name="email" placeholder="Enter your email">
+              <p class="error-message" id="email-error"></p>
               <button type="submit">Create user</button>
         </form>
         </section>
         
         <!-- Alert elements -->
-        <section id="message-alert">
-            <p id="message-element"></p>
+        <section class="flex column justify-center align-items-center | alert" id="message-alert">
+            <p class="message" id="message-element"></p>
             <button id="next-level">Next level</button>
             <button id="start-again">Start again</button>
         </section>
+
         <!-- Game elements -->
-        <section id="game">
-            <p>Level: <span id="level">1</span></p>
-            <p>Score: <span id="score">0</span></p>
-            <img src="" alt="enemy">
+        <section class="game-section" id="game">
+            <div class="flex justify-between">
+                <p id="logged-user">Name</p>
+                <p class="element-display">Level <span id="level">1</span></p>
+                <p class="element-display">Score <span id="score">0</span></p> 
+            </div>
+            <div class="flex justify-center enemy">
+                <button id="click-button">
+                    <img src="/images/1enemy.svg" alt="enemy" width="150px">
+                </button>
+            </div>
         </section>
-        <section>
-            <button id="click-button">Fight</button>
-        </section>
+
     </main>
+
     <script src="index.js"></script>
 </body>
 </html>

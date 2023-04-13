@@ -10,14 +10,31 @@
     <header>
     </header>
     <main>
+        <!-- Registration form elements -->
+        <section>
+            <h2>Clicker game</h2>
+            <form id="user-registration">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" placeholder="Maria" required>
+              <p id="name-error"></p>
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" placeholder="hello@gmail.com" required>
+              <p id="email-error"></p>
+              <button type="submit">Create user</button>
+        </form>
+        </section>
+        
+        <!-- Alert elements -->
         <section id="message-alert">
             <p id="message-element"></p>
             <button id="next-level">Next level</button>
             <button id="start-again">Start again</button>
         </section>
-        <section>
+        <!-- Game elements -->
+        <section id="game">
             <p>Level: <span id="level">1</span></p>
             <p>Score: <span id="score">0</span></p>
+            <img src="" alt="enemy">
         </section>
         <section>
             <button id="click-button">Fight</button>

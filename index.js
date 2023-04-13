@@ -6,6 +6,8 @@ const emailInput = document.getElementById("email");
 const nameError = document.getElementById("name-error");
 const emailError = document.getElementById("email-error");
 
+console.log(nameInput);
+
 // Validate input and display error message when input fields are blurred
 nameInput.addEventListener("blur", validateName);
 emailInput.addEventListener("blur", validateEmail);
@@ -73,12 +75,21 @@ function registrationSubmit(event) {
       };
       localStorage.setItem("user", JSON.stringify(user));
       
-      registrationForm.reset();
-
+      // window.location.href = 'game.html';
       // Hide the registration form and show the game
       registrationForm.style.display = "none";
       game.style.display = "block";
     }
+}
+
+const loggedUser = localStorage.getItem("user");
+console.log(loggedUser);
+
+if (loggedUser) {
+  // If user is logged in, hide the registration form and show the game
+  //   window.location.href = 'game.html';
+    registrationForm.style.display = "none";
+    game.style.display = "block";
 }
 
 
@@ -117,8 +128,8 @@ function incrementHandler() {
 clickButton.addEventListener("click", incrementHandler);
 
 // Messages
-const nextLevelMessage = (level, score) => `Level ${level}. Your score is ${score}.`;
-const winMessage = (score) => `You have won the game! Your score is ${score}.`;
+const nextLevelMessage = (level, score) => `Level ${level} <br> Your score is ${score}`;
+const winMessage = (score) => `You have won the game! <br> Your score is ${score}`;
 
 // Check if level should be increased or game should end
 function levelHandler() {
@@ -137,9 +148,9 @@ function levelHandler() {
 
 // Show message alert with given message and button according to message type
 function showMessage(message, showNextLevelButton, showStartAgainButton) {
-  messageAlert.style.display = "block";
+  messageAlert.style.display = "flex";
 
-  messageElement.textContent = message;
+  messageElement.innerHTML = message;
 
   nextLevelButton.style.display = showNextLevelButton ? "block" : "none";
   startAgainButton.style.display = showStartAgainButton ? "block" : "none";

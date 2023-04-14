@@ -42,7 +42,7 @@ function validateName() {
         nameInput.classList.add("error");
         return false;
     } else if (nameValue.length < 2) {
-        nameError.textContent = "Name must be at least 2 characters long";
+        nameError.textContent = "Name is too short";
         nameInput.classList.add("error");
         return false;
     }
@@ -59,7 +59,7 @@ function validateEmail() {
         emailInput.classList.add("error");
         return false;
     }  else if (!emailRegex.test(emailValue)) {
-        emailError.textContent = "Please enter a valid email address";
+        emailError.textContent = "Enter a valid email address";
         emailInput.classList.add("error");
         return false;
     }
@@ -122,7 +122,13 @@ clickButton.addEventListener("click", incrementHandler);
 const nextLevelMessage = (level, score) => `<span class="text-yellow">Level ${level}</span> <br> Your score is ${score}`;
 const winMessage = (score) => `<span class="text-yellow">You have won the game!</span> <br> Your score is ${score}`;
 
-const imageUrls = ["/images/1enemy.svg", "/images/2enemy.svg", "/images/3enemy.svg", "/images/4enemy.svg", "/images/5enemy.svg",];
+const imageUrls = [
+    "/images/1enemy.svg", 
+    "/images/2enemy.svg", 
+    "/images/3enemy.svg", 
+    "/images/4enemy.svg", 
+    "/images/5enemy.svg",
+];
 
 // Update the current image for the new level
 function updateImages() {
